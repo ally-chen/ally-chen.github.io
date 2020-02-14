@@ -1,0 +1,5 @@
+a {
+  color: #ffee32; }
+  a:hover {
+    color: #aaa;
+    background: #ddd; }
