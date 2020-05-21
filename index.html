@@ -6,8 +6,10 @@
     <meta name="description" content="幫您處理關於網站/網頁畫面呈現的大小事（如：小修改、新增區塊、網頁切版等等）">
     <meta name="keywords" content="網頁修改,網站修改,網頁切版,前端切版">
     <meta name="author" content="Ally Chen">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/main.css" rel="stylesheet">
     <title>Ally's Wonderland | Front-end Engineer</title>
+    <script src="assets/js/vue.min.js"></script>
 
 </head>
 
@@ -15,24 +17,144 @@
 <body>
 
 
-    <main role="main">
-      <div class="container">
-            <div class="comingbox">
-              <h2 class="title-coming">Under Construction</h2>
-              <h3>網頁建置中，如需網頁相關技術協助，<br>歡迎mail至<a href="mailto:allyroseline@gmail.com">allyroseline@gmail.com</a>洽詢</h3>
-                <div class="about-short">
-                    <h1>Web Developer</h1>
-                    <h3>Ally Chen</h3>
-                    <ul class="skills">
-                        <li>php</li>
-                        <li>vue.js</li>
-                        <li>html5/css3</li>
-                        <li>js/jQuery</li>
-                    </ul>
-                </div>
-            </div>
+<!--
+      <a href="#" class="btn-nav"></a>
+      <ul class="links">
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+-->
+  <header>
+    <ul class="menu" id="menu" onclick="openMenu(this)">
+      <li><a href="#about"><span class="en">About</span><span class="zh">關於我</span></a></li>
+      <li><a href="#view"><span class="en">Portfolio</span><span class="zh">作品集</span></a></li>
+      <li><a href="#contact"><span class="en">Contact</span><span class="zh">聯絡我</span></a></li>
+    </ul>
+  </header>
+  <div class="banner" id="about">
+  <div class="content">
+    <div class="container">
+      <div class="row align-items-end">
+        <div class="col-lg-7">
+          <h2 class="title-main">RWD <br>Web Design</h2>
+          <div class="about-short">
+<!--            <h1>Front-to-End Engineer</h1>-->
+              <h3><span>Ally Chen</span></h3>
+    <!--          <a href="mailto:allyroseline@gmail.com">allyroseline@gmail.com</a>-->
+              <ul class="list-skills" data-text="Skills">
+                <li><label>前端 </label> 
+                    <p><span class="tag">html5/css3</span> <span class="tag">sass/scss</span> <span class="tag">js/jQuery</span> <span class="tag">vue.js</span> <span class="tag">axios.js</span></p>
+                </li>
+                <li><label>後端 </label> 
+                    <p><span class="tag">php</span></p>
+                </li>
+                <li><label>影像處理</label> 
+                    <p><span class="tag">Photoshop</span></p>
+                </li>
+              </ul>
+          </div>
+        </div>
+        <div class="col-lg-5 text-right desc">
+          <p>現職 前端工程師</p>
+          <p>影像處理/網站RWD切版/VueJS</p>
+          <hr>
+          <p>國立臺灣大學 公衛學院行社所碩士</p>
+          <p>國立臺灣師範大學 衛教系/數位內容與創新應用學程</p>
+        </div>
       </div>
-    </main><!-- /.container -->
-
+    </div>
+  </div>
+  </div>
+      <div class="container-w portfolio" id="view">
+        <h2 class="title-bg">Portfolio</h2>
+        <div class="left">
+<!--
+          <h2 class="title-main">RWD <br>Web Design</h2>
+          <div class="about-short">
+            <h1>Front-to-End Engineer</h1>
+                <h3>Ally Chen</h3>
+                <a href="mailto:allyroseline@gmail.com">allyroseline@gmail.com</a>
+                <ul class="skills">
+                    <li>php</li>
+                    <li>vue.js</li>
+                    <li>html5/css3</li>
+                    <li>js/jQuery</li>
+                </ul>
+            </div>
+-->
+          <ul class="catelist">
+            <li><label><input type="radio" v-model="current" value="0" checked><span>全部一覽</span></label></li>
+            <li><label><input type="radio" v-model="current" value="1"><span>客製RWD</span></label></li>
+            <li><label><input type="radio" v-model="current" value="2"><span>客製RWD + Bootstrap</span></label></li>
+            <li><label><input type="radio" v-model="current" value="3"><span>其他</span></label></li>
+          </ul>
+          <a href="mailto:allyroseline@gmail.com" class="btn-big" id="contact">Contact me →</a>
+        </div>
+        <div class="right">
+          <div id="test"></div>
+            <transition v-for="item in cases" name="fadeUp">
+          <div class="item" v-if="current == item.cate || current == 0" >
+              <div class="box-wrap">
+                <div class="box">
+                  <a href="#" class="btn-mb">mobile</a>
+                  <img :src="item.img">
+                  <div class="hover">
+                    <img :src="item.imgD">
+                    <div class="cont">
+                      <h4>{{item.css}}</h4>
+    <!--                  <p>{{item.tags}}</p>-->
+                      <h6>{{item.tags}}</h6>
+                      <a :href="item.link" target="_blank" class="btn-view" title="瀏覽網站">→</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+            </transition>
+        </div>
+      </div>
+  <footer><p class="mb-0"> © 2020 Ally Chen</p></footer>
+  <script type="text/javascript" src="data.json"></script>
+<script>
+  var example1 = new Vue({
+      el: '#view',
+      data: {
+        cases:mywork,
+        current:0
+      },
+      mounted:function(){
+      },
+      methods:{
+      }
+  });
+  window.addEventListener("load", function(){
+    if(window.innerWidth<600){
+      document.getElementById("menu").classList.add("shrink")
+    }
+  })
+  document.addEventListener("scroll", function(){
+    if(window.scrollY>200||window.innerWidth<600){
+      document.getElementById("menu").classList.add("shrink")
+    }else{
+      document.getElementById("menu").classList.remove("shrink")
+    }
+  });
+  document.querySelectorAll( '.menu li a' ).forEach( (e)=>{
+    e.addEventListener("click", function(el){
+      el.preventDefault();
+      var target = e.getAttribute("href").substr(1)
+      var pos = Math.ceil(document.getElementById(target).getBoundingClientRect().top)
+      window.scroll({
+        behavior: 'smooth',
+        left: 0,
+        top: pos
+      });
+    })
+  })
+  function openMenu(e){
+    e.classList.remove("shrink")
+  }
+    </script>
 </body>
 </html>
