@@ -1,5 +1,23 @@
 var mywork=[
   {
+    img:"assets/img/cases/kkbox.jpg",
+    imgD:"assets/img/cases/kkbox-d.jpg",
+    name:"KKBOX example",
+    tags:"Vue、KKBOX openAPI",
+    cate:3,
+    css:"RWD客製切版",
+    link:"http://web.ntnu.edu.tw/~40105018E/kkbox/#/",
+  },
+  {
+    img:"assets/img/cases/recycle.jpg",
+    imgD:"assets/img/cases/recycle-d.jpg",
+    name:"資源回收小測驗",
+    tags:"Vue、interact.js",
+    cate:3,
+    css:"簡易切版",
+    link:"http://web.ntnu.edu.tw/~40105018E/demo/recycle/demo.html",
+  },
+  {
     img:"assets/img/cases/lunchoose.png",
     imgD:"assets/img/cases/lunchoose-d.png",
     name:"Lunchoose",
