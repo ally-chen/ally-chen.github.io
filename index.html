@@ -3,12 +3,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="幫您處理關於網站/網頁畫面呈現的大小事（如：小修改、新增區塊、網頁切版等等）">
+    <meta name="description" content="幫您處理關於網頁開發與維護的大小事">
     <meta name="keywords" content="網頁修改,網站修改,網頁切版,前端切版">
     <meta name="author" content="Ally Chen">
+    <meta property="og:url" content="https://ally-chen.github.io/">
+    <link rel="apple-touch-icon" href="assets/img/fav.png">
+    <link rel="icon" href="assets/img/fav.ico">
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/main.css" rel="stylesheet">
-    <title>Ally's Wonderland | Front-end Engineer</title>
+    <title>Ally's Wonderland | Web developer</title>
     <script src="assets/js/vue.min.js"></script>
 
 </head>
@@ -37,17 +40,17 @@
     <div class="container">
       <div class="row align-items-end">
         <div class="col-lg-7">
-          <h2 class="title-main">Web<br>Frontend</h2>
+          <h2 class="title-main">Web<br>Developer</h2>
           <div class="about-short">
 <!--            <h1>Front-to-End Engineer</h1>-->
               <h3><span>Ally Chen</span></h3>
     <!--          <a href="mailto:allyroseline@gmail.com">allyroseline@gmail.com</a>-->
               <ul class="list-skills" data-text="Skills">
                 <li><label>前端 </label> 
-                    <p><span class="tag">html5/css3</span> <span class="tag">sass/scss</span> <span class="tag">js/jQuery</span> <span class="tag">vue.js</span> <span class="tag">axios.js</span> <span class="tag">react.js</span></p>
+                    <p><span class="tag">react.js/hooks</span> <span class="tag">vue.js</span> <span class="tag">js/jQuery</span> <span class="tag">html5/css3</span> <span class="tag">sass/scss</span></p>
                 </li>
                 <li><label>後端 </label> 
-                    <p><span class="tag">php</span></p>
+                    <p><span class="tag">php</span> <span class="tag">MySQL</span> <span class="tag">PostgreSQL</span> <span class="tag">node.js</span> <span class="tag">JAVA</span></p>
                 </li>
                 <li><label>影像處理</label> 
                     <p><span class="tag">Photoshop</span></p>
@@ -56,8 +59,8 @@
           </div>
         </div>
         <div class="col-lg-5 text-right desc">
-          <p>現職 前端工程師</p>
-          <p>影像處理/網站RWD切版/ReactJS/VueJS</p>
+          <p>現職 軟體工程師</p>
+          <p>企業網站開發/NodeJS/PHP/ReactJS/VueJS/網站RWD切版</p>
           <hr>
           <p>國立臺灣大學 公衛學院行社所碩士</p>
           <p>國立臺灣師範大學 衛教系/數位內容與創新應用學程</p>
@@ -85,6 +88,8 @@
 -->
           <ul class="catelist">
             <li><label><input type="radio" v-model="current" value="0" checked><span>全部一覽</span></label></li>
+            <li><label><input type="radio" v-model="current" value="4"><span>React</span></label></li>
+            <li><label><input type="radio" v-model="current" value="5"><span>React + Spreadsheet</span></label></li>
             <li><label><input type="radio" v-model="current" value="1"><span>客製RWD</span></label></li>
             <li><label><input type="radio" v-model="current" value="2"><span>客製RWD + Bootstrap</span></label></li>
             <li><label><input type="radio" v-model="current" value="3"><span>其他</span></label></li>
@@ -114,7 +119,7 @@
             </transition>
         </div>
       </div>
-  <footer><p class="mb-0"> © 2020 Ally Chen</p></footer>
+  <footer><p class="mb-0"> © <span id="copyrightYear"></span> Ally Chen</p></footer>
   <script type="text/javascript" src="data.js"></script>
 <script>
   var example1 = new Vue({
@@ -132,6 +137,7 @@
     if(window.innerWidth<600){
       document.getElementById("menu").classList.add("shrink")
     }
+    document.getElementById("copyrightYear").innerHTML = new Date().getFullYear();
   })
   document.addEventListener("scroll", function(){
     if(window.scrollY>200||window.innerWidth<600){
